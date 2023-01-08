@@ -14,11 +14,8 @@ void InitList(SqList &L){
 }
 
 int main() {
-    int a=1
     SqList L;    // 声明一个顺序表
     InitList(L); // 初始化顺序表l l....未完待续，后续操作
-
-
     
     return 0;
 

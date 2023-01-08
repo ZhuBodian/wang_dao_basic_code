@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+*.exe
 
 # Distribution / packaging
 .Python
@@ -108,4 +109,4 @@ ENV/
 .vscode/
 .idea/
 __MACOSX/
-.exe
+
