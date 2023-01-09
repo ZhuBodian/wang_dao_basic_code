@@ -1,13 +1,15 @@
 // 顺序表的实现——静态分配
 #include <stdio.h>
+typedef int ElemType;
+
 #define MaxSize 10      //定义最大长度
 typedef struct {
-    int data[MaxSize];      //用静态的“数组"存放数据元素
+    int ElemType[MaxSize];      //用静态的“数组"存放数据元素
     int length;     //顺序表的当前长度
 }SqList;        //顺序表的类型定义
 
 
-// 基本操作—初始化一个顺序表
+// 静态顺序表初始化一个顺序表
 void InitList(SqList &L){
     for (int i = 0; i < MaxSize; i++)
         L.data[i] = 0;      //将所有数据元素设置为默认初始值
@@ -16,8 +18,8 @@ void InitList(SqList &L){
 }
 
 
-// 基本操作——增
-bool ListInsert(SqList& L, int i, int e) {
+// 静/动态顺序表指定位序处增加元素
+bool ListInsert(SqList& L, int i, ElemType e) {
     if (i<1 || i>L.length + 1)        //判断i的范围是否有效
         return  false;
     if (L.length >= MaxSize)        //当前存储空间已满，不能插入
@@ -30,8 +32,8 @@ bool ListInsert(SqList& L, int i, int e) {
 }
 
 
-// 基本操作——删
-bool ListDelete(SqList& L, int i, int& e) {
+// 静/动态顺序表指定位序处删除元素，并返回删除元素的值，
+bool ListDelete(SqList& L, int i, ElemType& e) {//这个e带&是为了返回删除的值
     if (i<1 || i>L.length)        //判断i的范围是否有效
         return  false;
     e = L.data[i - 1];      //将被删除的元素赋值给e
@@ -43,14 +45,14 @@ bool ListDelete(SqList& L, int i, int& e) {
 }
 
 
-// 基本操作——按位查找
+// 静/动态顺序表按位查找
 int GetElem(SeqList L, int i) {
     return L.data[i - 1];
 }
 
 
-// 基本操作——按值查找；在顺序表L中查找第一个元素值等于e的元素，并返回其位序
-int LocateElem(SqList L, int e) {
+// 静/动态顺序表按值查找；在顺序表L中查找第一个元素值等于e的元素，并返回其位序
+int LocateElem(SqList L, ElemType e) {
     for (int i = 0; i < L.length; i++)
         if (L.data[i] == e)
             return i + 1;       //数组下标为i的元素值等于e，返回其位序i+1
